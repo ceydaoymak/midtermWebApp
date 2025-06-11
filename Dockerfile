@@ -16,6 +16,6 @@ COPY start.sh /home/site/wwwroot/start.sh
 RUN chmod +x /home/site/wwwroot/start.sh
 
 EXPOSE 22
-EXPOSE 3000
+EXPOSE 8080
 
 CMD ["/home/site/wwwroot/start.sh"]
