@@ -7,14 +7,15 @@ WORKDIR /app
 COPY . .
 RUN npm install
 
-
 RUN echo 'root:123456' | chpasswd
 RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 RUN sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config
 
-RUN chmod +x start.sh
+RUN mkdir -p /home/site/wwwroot
+COPY start.sh /home/site/wwwroot/start.sh
+RUN chmod +x /home/site/wwwroot/start.sh
 
 EXPOSE 22
 EXPOSE 3000
 
-CMD ["./start.sh"]
+CMD ["/home/site/wwwroot/start.sh"]

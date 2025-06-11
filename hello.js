@@ -4,7 +4,7 @@ const { DefaultAzureCredential } = require("@azure/identity");
 const { SecretClient } = require("@azure/keyvault-secrets");
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 
 const keyVaultUrl = "https://group15Vault.vault.azure.net";
 const credential = new DefaultAzureCredential();
