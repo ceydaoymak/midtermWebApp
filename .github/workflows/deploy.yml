@@ -1,4 +1,4 @@
-name: Azure Web App
+name: Azure Web App CI/CD
 
 on:
   push:
@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repo
+    - name: Checkout repository
       uses: actions/checkout@v4
 
     - name: Azure Login
@@ -20,15 +20,15 @@ jobs:
 
     - name: Docker Login to ACR
       run: |
-        echo ${{ secrets.REGISTRY_PASSWORD }} | docker login group15registry.azurecr.io -u ${{ secrets.REGISTRY_USERNAME }} --password-stdin
+        echo "${{ secrets.REGISTRY_PASSWORD }}" | docker login group15registry.azurecr.io -u "${{ secrets.REGISTRY_USERNAME }}" --password-stdin
 
-    - name: Build Docker image
+    - name: Build Docker Image
       run: docker build -t group15registry.azurecr.io/azureweb:latest .
 
-    - name: Push Docker image
+    - name: Push Docker Image
       run: docker push group15registry.azurecr.io/azureweb:latest
 
-    - name: Deploy to Azure App Service
+    - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v2
       with:
         app-name: 'helloApp-CB'
