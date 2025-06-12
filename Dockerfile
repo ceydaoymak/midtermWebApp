@@ -1,18 +1,14 @@
-# Base image
 FROM node:18
 
-# Create app directory
 WORKDIR /app
 
-# Copy package.json and install dependencies
 COPY package*.json ./
-RUN npm install
 
-# Copy the rest of the app
+RUN npm config set registry https://registry.npmjs.org/ \
+  && npm install --legacy-peer-deps --prefer-online --retry 5 --fetch-retries=5 --fetch-retry-factor=2
+
 COPY . .
 
-# Expose the port your app runs on
-EXPOSE 3000
+RUN chmod +x ./start.sh
 
-# Start the app
-CMD ["npm", "start"]
+CMD ["./start.sh"]

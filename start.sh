@@ -1,11 +1,10 @@
 #!/bin/bash
 
-service ssh start
-
-cd /home/site/wwwroot
+echo "📦 Uygulama başlatılıyor..."
 
 if [ ! -d "node_modules" ]; then
-    npm install
+  echo "📦 node_modules bulunamadı, yükleniyor..."
+  npm install
 fi
 
 exec npm start
