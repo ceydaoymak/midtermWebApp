@@ -3,12 +3,13 @@ FROM node:18
 WORKDIR /app
 
 COPY package*.json ./
-
-RUN npm config set registry https://registry.npmjs.org/ \
-  && npm install --legacy-peer-deps --prefer-online --retry 5 --fetch-retries=5 --fetch-retry-factor=2
+RUN npm install
 
 COPY . .
 
 RUN chmod +x ./start.sh
+
+ENV PORT=80
+EXPOSE 80
 
 CMD ["./start.sh"]
