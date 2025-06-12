@@ -1,6 +1,8 @@
 {
   "properties": {
+    "appCommandLine": "start.sh",
     "linuxFxVersion": "DOCKER|group15registry.azurecr.io/azureweb:latest",
-    "appCommandLine": "start.sh"
+    "acrUseManagedIdentityCreds": true,
+    "acrUserManagedIdentityID": "/subscriptions/438a223d-1c5b-4778-bfa6-844b3004f4a1/resourceGroups/midterm-group15/providers/Microsoft.ManagedIdentity/userAssignedIdentities/userIdentity"
   }
 }

@@ -30,7 +30,7 @@ app.get("/hello", async (req, res) => {
     const result = await client.query("SELECT NOW()");
     await client.end();
 
-    res.send(`Hello from AZURE GROUP 15`);
+    res.send(`Hello from AZURE GROUP 15 Version 1`);
 
   } catch (error) {
     console.error("Connection Error:", error);
